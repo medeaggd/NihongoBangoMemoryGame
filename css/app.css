@@ -53,6 +53,7 @@ h1, .score-panel {
     justify-content: space-between;
     align-items: center;
     margin: 0 0 3em;
+    font: 400 72pt "Noto Sans Japanese", serif;
 }
 
 .deck .card {
