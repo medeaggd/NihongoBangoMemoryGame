@@ -109,5 +109,13 @@ h1, .score-panel {
 
 .score-panel .restart {
     float: right;
-    cursor: pointer;
+}
+
+.reset {
+     cursor: pointer;
+     border: 0;
+     font-size: 1em;
+     color: #000;
+     text-shadow: 1px 1px 5px #666;
+     background-color: #fc9;
 }
