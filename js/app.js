@@ -1,7 +1,10 @@
 /*
  * Create a list that holds all of your cards
  */
-
+const cardList = [
+     "一", "二", "三", "四", "五", "六", "七", "八",
+     "一", "二", "三", "四", "五", "六", "七", "八"
+]
 
 /*
  * Display the cards on the page
