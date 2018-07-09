@@ -41,7 +41,7 @@ h1, .score-panel {
  * Styles for the deck of cards
  */
 
-.deck {
+#deck {
     width: 660px;
     min-height: 680px;
     background: linear-gradient(120deg, #c03 0%, #666 70%);
@@ -56,7 +56,7 @@ h1, .score-panel {
     font: 400 72pt "Noto Sans Japanese", serif;
 }
 
-.deck .card {
+#deck .card {
     height: 125px;
     width: 125px;
     background: #000;
@@ -70,17 +70,17 @@ h1, .score-panel {
     box-shadow: 5px 2px 20px 0 rgba(46, 61, 73, 0.5);
 }
 
-.deck .card.open {
+#deck .card.open {
     transform: rotateY(0);
     background: #fff;
     cursor: default;
 }
 
-.deck .card.show {
+#deck .card.show {
     font-size: 33px;
 }
 
-.deck .card.match {
+#deck .card.match {
     cursor: default;
     background: #fc9;
     font-size: 33px;

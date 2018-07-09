@@ -4,13 +4,16 @@
 const cardList = [
      "一", "二", "三", "四", "五", "六", "七", "八",
      "一", "二", "三", "四", "五", "六", "七", "八"
-]
-
+];
+const cards = document.querySelectorAll('.card');
 /*
  * Display the cards on the page
  *   - shuffle the list of cards using the provided "shuffle" method below
+ --?.shuffle(cardList);
  *   - loop through each card and create its HTML
+ --cardList.forEach.createHTML()?
  *   - add each card's HTML to the page
+ --document.ul.li.appendChild()?
  */
 
 // Shuffle function from http://stackoverflow.com/a/2450976
@@ -31,6 +34,9 @@ function shuffle(array) {
 
 /*
  * set up the event listener for a card. If a card is clicked:
+ document.querySelector('#deck').addEventListener('click', function() {
+
+}
  *  - display the card's symbol (put this functionality in another function that you call from this one)
  *  - add the card to a *list* of "open" cards (put this functionality in another function that you call from this one)
  --add html class .open
