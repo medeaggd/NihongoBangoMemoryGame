@@ -34,8 +34,8 @@ function shuffle(array) {
 
 /*
  * set up the event listener for a card. If a card is clicked:
- document.querySelector('#deck').addEventListener('click', function() {
-
+ document.querySelector('.card').addEventListener('click', function(evt) {
+     if (evt.target.nodeName)
 }
  *  - display the card's symbol (put this functionality in another function that you call from this one)
  *  - add the card to a *list* of "open" cards (put this functionality in another function that you call from this one)
