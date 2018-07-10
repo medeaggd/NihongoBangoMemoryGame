@@ -5,7 +5,7 @@ const cardList = [
      "一", "二", "三", "四", "五", "六", "七", "八",
      "一", "二", "三", "四", "五", "六", "七", "八"
 ];
-const cards = document.querySelectorAll('.card');
+const deck = document.querySelector('#deck');
 /*
  * Display the cards on the page
  *   - shuffle the list of cards using the provided "shuffle" method below
@@ -29,14 +29,17 @@ function shuffle(array) {
     }
 
     return array;
-}
+};
 
-
+deck.addEventListener('click', function(evt) {
+     if (evt.target.classList.contains('card')) {
+          evt.target.classList.toggle('show');
+          evt.target.classList.toggle('open');
+     }
+});
 /*
  * set up the event listener for a card. If a card is clicked:
- document.querySelector('.card').addEventListener('click', function(evt) {
-     if (evt.target.nodeName)
-}
+
  *  - display the card's symbol (put this functionality in another function that you call from this one)
  *  - add the card to a *list* of "open" cards (put this functionality in another function that you call from this one)
  --add html class .open
