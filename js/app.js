@@ -36,6 +36,9 @@ deck.addEventListener('click', function(evt) {
      if (evt.target.classList.contains('card')) {
           displayCard(evt.target);
           pushCard(evt.target);
+               if (openedCards.length === 2) {
+                    checkMatch();
+               }
      }
 });
 function displayCard(evt.target) {
@@ -44,6 +47,13 @@ function displayCard(evt.target) {
 };
 function pushCard(evt.target) {
      openedCards.push(evt.target);
+};
+function checkMatch() {
+     if (openedCards.classList[0] === openedCards.classList[1])
+          openedCards.classList.toggle('matched');
+          /*Need to clear old list*/
+          openedCards.pop();
+          openedCards.pop();
 }
 
 /*
