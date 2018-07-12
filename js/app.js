@@ -49,11 +49,12 @@ function pushCard(evt.target) {
      openedCards.push(evt.target);
 };
 function checkMatch() {
-     if (openedCards.classList[0] === openedCards.classList[1])
+     if (openedCards.classList[0] === openedCards.classList[1]) {
           openedCards.classList.toggle('matched');
-          /*Need to clear old list*/
+          /*Need to clear cards from openedCards list*/
           openedCards.pop();
           openedCards.pop();
+     }
 }
 
 /*
