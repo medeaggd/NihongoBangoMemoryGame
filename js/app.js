@@ -34,14 +34,14 @@ function shuffle(array) {
 
 deck.addEventListener('click', function(evt) {
      if (evt.target.classList.contains('card')) {
-          displayCard(evt.target);
+          toggleCardDisplay(evt.target);
           pushCard(evt.target);
                if (openedCards.length === 2) {
                     checkMatch();
                }
      }
 });
-function displayCard(evt.target) {
+function toggleCardDisplay(evt.target) {
      evt.target.classList.toggle('show');
      evt.target.classList.toggle('open');
 };
@@ -52,6 +52,11 @@ function checkMatch() {
      if (openedCards.classList[0] === openedCards.classList[1]) {
           openedCards.classList.toggle('matched');
           /*Need to clear cards from openedCards list*/
+          openedCards.pop();
+          openedCards.pop();
+     } else {
+          toggleCardDisplay(openedCards[0]);
+          toggleCardDisplay(openedCards[1]);
           openedCards.pop();
           openedCards.pop();
      }
