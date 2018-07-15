@@ -32,6 +32,16 @@ function shuffle(array) {
     return array;
 };
 
+function createCard(card) {
+     let playingCard = document.getElementByClass("card");
+     let cardSpan = playingCard.createElement("span");
+     
+}
+
+shuffle(cardList);
+cardList.forEach(createCard);
+
+
 deck.addEventListener('click', function(evt) {
      if (evt.target.classList.contains('card')) {
           toggleCardDisplay(evt.target);
@@ -41,13 +51,16 @@ deck.addEventListener('click', function(evt) {
                }
      }
 });
+
 function toggleCardDisplay(evt.target) {
      evt.target.classList.toggle('show');
      evt.target.classList.toggle('open');
 };
+
 function pushCard(evt.target) {
      openedCards.push(evt.target);
 };
+
 function checkMatch() {
      if (openedCards.classList[0] === openedCards.classList[1]) {
           openedCards.classList.toggle('matched');
