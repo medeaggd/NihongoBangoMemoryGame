@@ -33,13 +33,16 @@ function shuffle(array) {
 };
 
 function createCard(card) {
-     let playingCard = document.getElementByClass('card');
-     let cardSpan = playingCard.createElement('span');
-     cardSpan.classList.add(card);
-     let node = document.createTextNode(card);
-     cardSpan.appendChild(node);
+     let cardSpan = document.createElement('span');
+     for (i = 1; i < 17; i++) {
+          if (deck.li.contains('span')){
+               /* clear old span*/
+          };
+          cardSpan.classList.add(card);
+          cardSpan.innerHTML(card);
+     };
 }
-
+ /* These need to process on load, and then again on "New Board" */
 shuffle(cardList);
 cardList.forEach(createCard);
 
