@@ -33,9 +33,11 @@ function shuffle(array) {
 };
 
 function createCard(card) {
-     let playingCard = document.getElementByClass("card");
-     let cardSpan = playingCard.createElement("span");
-     
+     let playingCard = document.getElementByClass('card');
+     let cardSpan = playingCard.createElement('span');
+     cardSpan.classList.add(card);
+     let node = document.createTextNode(card);
+     cardSpan.appendChild(node);
 }
 
 shuffle(cardList);
