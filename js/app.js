@@ -32,24 +32,21 @@ function shuffle(array) {
     return array;
 };
 
-function createCard(card) {
+function createCard() {
      let cardSpan = document.createElement('span');
-     for (i = 1; i < 17; i++) {
-          if (deck.li.contains('span')){
-               /* clear old span*/
-          }
+     for (const card of cards) {
           cardSpan.classList.add(card);
           cardSpan.innerHTML(card);
      }
 };
- /* These need to process on load, and then again on "New Board" */
-document.addEventListener('load', function createBoard() {
+ /* Creating initial laod of cards after page loads */
+document.addEventListener('load', {
      shuffle(cardList);
      cardList.forEach(createCard);
 });
-
-document.getElementByID('reset').addEventListener('click', function newBoard() {
-     document.getElementsByClass('card').removeChild('span');
+/* Resets the board when the "New Board" button is clicked */
+document.getElementByID('reset').addEventListener('click', {
+     document.getElementsByClass('card').removeChild('span'); /* clear old spans*/
      shuffle(cardList);
      cardList.forEach(createCard);
 });
