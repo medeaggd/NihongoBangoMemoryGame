@@ -39,11 +39,13 @@ function createCard() {
           cardSpan.innerHTML(card);
      }
 };
+
  /* Creating initial laod of cards after page loads */
 document.addEventListener('load', {
      shuffle(cardList);
      cardList.forEach(createCard);
 });
+
 /* Resets the board when the "New Board" button is clicked */
 document.getElementByID('reset').addEventListener('click', {
      document.getElementsByClass('card').removeChild('span'); /* clear old spans*/
