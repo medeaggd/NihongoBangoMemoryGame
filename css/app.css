@@ -112,7 +112,7 @@ h1, .score-panel {
     float: right;
 }
 
-.reset {
+#reset {
      cursor: pointer;
      border: 0;
      font-size: 1em;
