@@ -32,25 +32,33 @@ function shuffle(array) {
     return array;
 };
 
-function createCard() {
-     let cardSpan = document.createElement('span');
-     for (const card of cards) {
-          cardSpan.classList.add(card);
-          cardSpan.innerHTML(card);
-     }
-};
-
  /* Creating initial laod of cards after page loads */
 document.addEventListener('load', {
      shuffle(cardList);
-     cardList.forEach(createCard);
+     cardList.forEach(function createCard(number) {
+          let cardSpan = document.createElement('span');
+          let cards = deck.querySelectorAll('li');
+          for (let card of cards) {
+               card.appendChild(cardSpan);
+               cardSpan.classList.add(number);
+               cardSpan.innerHTML(number);
+          };
+     });
 });
 
 /* Resets the board when the "New Board" button is clicked */
 document.getElementByID('reset').addEventListener('click', {
      document.getElementsByClass('card').removeChild('span'); /* clear old spans*/
      shuffle(cardList);
-     cardList.forEach(createCard);
+     cardList.forEach(function createCard(number) {
+          let cardSpan = document.createElement('span');
+          let cards = deck.querySelectorAll('li');
+          for (let card of cards) {
+               card.appendChild(cardSpan);
+               cardSpan.classList.add(cardList);
+               cardSpan.innerHTML(cardList);
+          };
+     });
 });
 
 deck.addEventListener('click', function(evt) {
