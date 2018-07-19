@@ -34,7 +34,7 @@ function shuffle(array) {
     return array;
 };
 
- /* Creating initial laod of cards after page loads */
+ /* Creating initial load of cards after page loads */
 document.addEventListener('load', {
      shuffle(cardList);
      cardList.forEach(function(number) {
