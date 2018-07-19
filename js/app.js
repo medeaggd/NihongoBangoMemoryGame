@@ -6,6 +6,7 @@ const cardList = [
      "一", "二", "三", "四", "五", "六", "七", "八"
 ];
 const deck = document.querySelector('#deck');
+const cards = deck.querySelectorAll('.card');
 let openedCards = [];
 /*
  * Display the cards on the page
@@ -35,9 +36,8 @@ function shuffle(array) {
  /* Creating initial laod of cards after page loads */
 document.addEventListener('load', {
      shuffle(cardList);
-     cardList.forEach(function createCard(number) {
+     cardList.forEach(function(number) {
           let cardSpan = document.createElement('span');
-          let cards = deck.querySelectorAll('li');
           for (let card of cards) {
                card.appendChild(cardSpan);
                cardSpan.classList.add(number);
