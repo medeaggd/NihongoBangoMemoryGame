@@ -7,6 +7,7 @@ const cardList = [
 ];
 const deck = document.querySelector('#deck');
 const cards = deck.querySelectorAll('.card');
+const newBoard = document.getElementByID('reset');
 let openedCards = [];
 /*
  * Display the cards on the page
@@ -47,7 +48,7 @@ document.addEventListener('load', {
 });
 
 /* Resets the board when the "New Board" button is clicked */
-document.getElementByID('reset').addEventListener('click', {
+newBoard.addEventListener('click', {
      document.getElementsByClass('card').removeChild('span'); /* clear old spans*/
      shuffle(cardList);
      cardList.forEach(function createCard(number) {
