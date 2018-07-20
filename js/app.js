@@ -1,3 +1,6 @@
+window.onload = function() {
+	startGame();
+}
 /*
  * Create a list that holds all of your cards
  */
@@ -11,6 +14,7 @@ const deck = document.querySelector('#deck');
 const cards = deck.querySelectorAll('.card');
 const newBoard = document.getElementByID('reset');
 let openedCards = [];
+let matched = 0;
 /*
  * Display the cards on the page
  *   - shuffle the list of cards using the provided "shuffle" method below
@@ -50,59 +54,55 @@ function createGameBoard() {
 }
 
  /* Initial load of cards after page loads */
-window.onload = function() {
+function startGame() {
      shuffle(cardList);
-     cardList.forEach(function(number) {
-          let cardSpan = document.createElement('span');
-
-     });
-});
+	createGameBoard();
+	/* Initialize clock */
+};
 
 /* Resets the board when the "New Board" button is clicked */
 newBoard.addEventListener('click', {
-     document.getElementsByClass('card').removeChild('span'); /* clear old spans*/
-     shuffle(cardList);
-     cardList.forEach(function createCard(number) {
-          let cardSpan = document.createElement('span');
-          let cards = deck.querySelectorAll('li');
-          for (let card of cards) {
-               card.appendChild(cardSpan);
-               cardSpan.classList.add(cardList);
-               cardSpan.innerHTML(cardList);
-          };
-     });
+
 });
 
 deck.addEventListener('click', function(evt) {
-     if (evt.target.classList.contains('card')) {
-          toggleCardDisplay(evt.target);
-          pushCard(evt.target);
+	let clickedCard = evt.target;
+     if (clickedCard.classList.contains('card') && !clickedCard.classList.contains('match') && openedCards.length < 2) {
+          toggleCardDisplay(clickedCard);
+          openedCards.push(clickedCard);
                if (openedCards.length === 2) {
                     checkMatch();
                }
      }
 });
 
-function toggleCardDisplay(evt.target) {
-     evt.target.classList.toggle('show');
-     evt.target.classList.toggle('open');
+function toggleCardDisplay(clickedCard) {
+     clickedCard.classList.toggle('show');
+     clickedCard.classList.toggle('open');
 };
 
-function pushCard(evt.target) {
-     openedCards.push(evt.target);
+function clearOpened(openedCards) {
+     for (let open of openedCards) {
+		open.classList.toggle('open');
+		open.classList.toggle('show');
+	}
 };
 
-function checkMatch() {
-     if (openedCards.classList[0] === openedCards.classList[1]) {
-          openedCards.classList.toggle('matched');
-          openedCards.pop();
-          openedCards.pop();
+function checkMatch(clickedCard) {
+     if (openedCards[0].firstElementChild.className === openedCards[1].firstElementChild.className) {
+          makeMatch(openedCards);
      } else {
-          toggleCardDisplay(openedCards[0]);
-          toggleCardDisplay(openedCards[1]);
-          openedCards.pop();
-          openedCards.pop();
+          openedCards = [];
      }
+}
+
+function makeMatch(openedCards) {
+	openedCards[1].classList.toggle('match');
+	openedCards[0].classList.toggle('open');
+	// add moves?
+	if (matched === 16) {
+		//end game conditions
+	}
 }
 
 /*
