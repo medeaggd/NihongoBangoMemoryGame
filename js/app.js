@@ -2,8 +2,10 @@
  * Create a list that holds all of your cards
  */
 const cardList = [
-     "一", "二", "三", "四", "五", "六", "七", "八",
-     "一", "二", "三", "四", "五", "六", "七", "八"
+     "img/ichi.jpg", "img/ni.jpg", "img/san.jpg", "img/shi.jpg",
+	"img/go.jpg", "img/loku.jpg", "img/nana.jpg", "img/hachi.jpg",
+	"img/ichi.jpg", "img/ni.jpg", "img/san.jpg", "img/shi.jpg",
+	"img/go.jpg", "img/loku.jpg", "img/nana.jpg", "img/hachi.jpg"
 ];
 const deck = document.querySelector('#deck');
 const cards = deck.querySelectorAll('.card');
@@ -37,6 +39,14 @@ function shuffle(array) {
 /* Create a card */
 function createCardList(card) {
 	return `<li class="card"><i class="${card}"></i></li>"`;
+};
+
+function createGameBoard() {
+	const cardHTML = cardList.map(function(card) {
+		return cardList(card);
+	});
+	deck.innerHTML = cardHTML.join('');
+	return deck;
 }
 
  /* Initial load of cards after page loads */
@@ -44,11 +54,7 @@ window.onload = function() {
      shuffle(cardList);
      cardList.forEach(function(number) {
           let cardSpan = document.createElement('span');
-          for (let card of cards) {
-               card.appendChild(cardSpan);
-               cardSpan.classList.add(number);
-               cardSpan.innerHTML(number);
-          };
+
      });
 });
 
