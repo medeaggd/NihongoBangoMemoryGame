@@ -34,8 +34,13 @@ function shuffle(array) {
     return array;
 };
 
- /* Creating initial laod of cards after page loads */
-document.addEventListener('load', {
+/* Create a card */
+function createCardList(card) {
+	return `<li class="card"><i class="${card}"></i></li>"`;
+}
+
+ /* Initial load of cards after page loads */
+window.onload = function() {
      shuffle(cardList);
      cardList.forEach(function(number) {
           let cardSpan = document.createElement('span');
