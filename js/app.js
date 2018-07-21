@@ -6,9 +6,9 @@ window.onload = function() {
  */
 const cardList = [
      "img/ichi.jpg", "img/ni.jpg", "img/san.jpg", "img/shi.jpg",
-	"img/go.jpg", "img/loku.jpg", "img/nana.jpg", "img/hachi.jpg",
+	"img/go.jpg", "img/roku.jpg", "img/nana.jpg", "img/hachi.jpg",
 	"img/ichi.jpg", "img/ni.jpg", "img/san.jpg", "img/shi.jpg",
-	"img/go.jpg", "img/loku.jpg", "img/nana.jpg", "img/hachi.jpg"
+	"img/go.jpg", "img/roku.jpg", "img/nana.jpg", "img/hachi.jpg"
 ];
 const deck = document.querySelector('#deck');
 const cards = deck.querySelectorAll('.card');
@@ -62,7 +62,8 @@ function startGame() {
 
 /* Resets the board when the "New Board" button is clicked */
 newBoard.addEventListener('click', {
-
+	openedCards = [];
+	startGame();
 });
 
 deck.addEventListener('click', function(evt) {
