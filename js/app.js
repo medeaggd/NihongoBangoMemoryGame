@@ -14,7 +14,8 @@ const deck = document.querySelector('#deck');
 const cards = deck.querySelectorAll('.card');
 const newBoard = document.getElementByID('reset');
 let openedCards = [];
-let matched = 0;
+let matchCount = 0;
+let clickedCard = evt.target;
 /*
  * Display the cards on the page
  *   - shuffle the list of cards using the provided "shuffle" method below
@@ -67,19 +68,18 @@ newBoard.addEventListener('click', {
 });
 
 deck.addEventListener('click', function(evt) {
-	let clickedCard = evt.target;
      if (clickedCard.classList.contains('card') && !clickedCard.classList.contains('match') && openedCards.length < 2) {
           toggleCardDisplay(clickedCard);
           openedCards.push(clickedCard);
                if (openedCards.length === 2) {
                     checkMatch();
                }
+		matchCount += 1;
      }
 });
 
 function toggleCardDisplay(clickedCard) {
-     clickedCard.classList.toggle('show');
-     clickedCard.classList.toggle('open');
+     clickedCard.classList.add('show', 'open');
 };
 
 function clearOpened(openedCards) {
@@ -99,9 +99,9 @@ function checkMatch(clickedCard) {
 
 function makeMatch(openedCards) {
 	openedCards[1].classList.toggle('match');
-	openedCards[0].classList.toggle('open');
+	openedCards[0].classList.toggle('match');
 	// add moves?
-	if (matched === 16) {
+	if (matchCount === 16) {
 		//end game conditions
 	}
 }
