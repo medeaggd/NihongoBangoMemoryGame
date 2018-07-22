@@ -4,6 +4,7 @@
 
 * [Instructions](#instructions)
 * [Contributing](#contributing)
+* [Nihon Bango Version](#nihonbangoversion)
 
 ## Instructions
 
@@ -18,3 +19,7 @@ For specific, detailed instructions, look at the project instructions in the [Ud
 This repository is the starter code for _all_ Udacity students. Therefore, we most likely will not accept pull requests.
 
 For details, check out [CONTRIBUTING.md](CONTRIBUTING.md).
+
+## Nihon Bango Version
+
+This version was adapted by Megan Quinn for the Front End Nano Degree program. Many aesthetic changes have been made with free wallpapers, fonts, and images found on the web. 
