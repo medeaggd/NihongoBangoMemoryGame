@@ -1,7 +1,3 @@
-// Readies the game to start when the page is loaded
-window.onload = function() {
-	startGame();
-}
 /*
  * Create a list that holds all of your cards
  */
@@ -15,6 +11,7 @@ const deck = document.getElementById('deck'); // Targets the ul list that will h
 const newBoard = document.getElementById('reset'); // Targets the New Board/reset button
 let openedCards = []; // Creates an open array for cards to be placed to compare matches
 let moveCount = 0; // Creates a running counter for moves made in the game
+let trueCardArr = [];
 
 /*
  * Display the cards on the page
@@ -22,6 +19,11 @@ let moveCount = 0; // Creates a running counter for moves made in the game
  *   - loop through each card and create its HTML
  *   - add each card's HTML to the page
  */
+
+ // Readies the game to start when the page is loaded
+ window.onload = function() {
+ 	startGame();
+ }
 
 // Shuffle function from http://stackoverflow.com/a/2450976
 function shuffle(array) {
@@ -39,10 +41,8 @@ function shuffle(array) {
 };
 
 // Create each card
-function createDeck(cardList) {
-     for (let card of cards) {
-	         return `<li class="card"><img src="${card}"></li>`;
-     };
+function createCardList(card) {
+     return `<li class="card"><img src="${card}"></li>`;
 };
 
 // Put the shuffled, created cards onto the board
@@ -57,6 +57,9 @@ function createGameBoard() {
  // Initial load of cards after page loads
 function startGame() {
      shuffle(cardList);
+     cardList.forEach(function(card) {
+          trueCardArr.push(createCardList(card));
+     });
 	createGameBoard();
 	// Initialize clock
 };
@@ -70,8 +73,8 @@ newBoard.addEventListener('click', function() {
 
 // Base listener function on deck to flip cards and check matches
 deck.addEventListener('click', function(evt) {
+     let clickedCard = evt.target;
      if (clickedCard.classList.contains('card') && !clickedCard.classList.contains('match') && openedCards.length < 2) {
-          let clickedCard = evt.target;
           toggleCardDisplay(clickedCard);
           openedCards.push(clickedCard);
                if (openedCards.length === 2) {
