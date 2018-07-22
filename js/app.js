@@ -1,14 +1,21 @@
+window.onload = function() {
+	startGame();
+}
 /*
  * Create a list that holds all of your cards
  */
 const cardList = [
-     "一", "二", "三", "四", "五", "六", "七", "八",
-     "一", "二", "三", "四", "五", "六", "七", "八"
+     "img/ichi.jpg", "img/ni.jpg", "img/san.jpg", "img/shi.jpg",
+	"img/go.jpg", "img/roku.jpg", "img/nana.jpg", "img/hachi.jpg",
+	"img/ichi.jpg", "img/ni.jpg", "img/san.jpg", "img/shi.jpg",
+	"img/go.jpg", "img/roku.jpg", "img/nana.jpg", "img/hachi.jpg"
 ];
 const deck = document.querySelector('#deck');
 const cards = deck.querySelectorAll('.card');
 const newBoard = document.getElementByID('reset');
 let openedCards = [];
+let matchCount = 0;
+let clickedCard = evt.target;
 /*
  * Display the cards on the page
  *   - shuffle the list of cards using the provided "shuffle" method below
@@ -34,64 +41,69 @@ function shuffle(array) {
     return array;
 };
 
- /* Creating initial load of cards after page loads */
-document.addEventListener('load', {
+/* Create a card */
+function createCardList(card) {
+	return `<li class="card"><i class="${card}"></i></li>"`;
+};
+
+function createGameBoard() {
+	const cardHTML = cardList.map(function(card) {
+		return cardList(card);
+	});
+	deck.innerHTML = cardHTML.join('');
+	return deck;
+}
+
+ /* Initial load of cards after page loads */
+function startGame() {
      shuffle(cardList);
-     cardList.forEach(function(number) {
-          let cardSpan = document.createElement('span');
-          for (let card of cards) {
-               card.appendChild(cardSpan);
-               cardSpan.classList.add(number);
-               cardSpan.innerHTML(number);
-          };
-     });
-});
+	createGameBoard();
+	/* Initialize clock */
+};
 
 /* Resets the board when the "New Board" button is clicked */
 newBoard.addEventListener('click', {
-     document.getElementsByClass('card').removeChild('span'); /* clear old spans*/
-     shuffle(cardList);
-     cardList.forEach(function createCard(number) {
-          let cardSpan = document.createElement('span');
-          let cards = deck.querySelectorAll('li');
-          for (let card of cards) {
-               card.appendChild(cardSpan);
-               cardSpan.classList.add(cardList);
-               cardSpan.innerHTML(cardList);
-          };
-     });
+	openedCards = [];
+	startGame();
 });
 
 deck.addEventListener('click', function(evt) {
-     if (evt.target.classList.contains('card')) {
-          toggleCardDisplay(evt.target);
-          pushCard(evt.target);
+     if (clickedCard.classList.contains('card') && !clickedCard.classList.contains('match') && openedCards.length < 2) {
+          toggleCardDisplay(clickedCard);
+          openedCards.push(clickedCard);
                if (openedCards.length === 2) {
                     checkMatch();
                }
+		matchCount += 1;
      }
 });
 
-function toggleCardDisplay(evt.target) {
-     evt.target.classList.toggle('show');
-     evt.target.classList.toggle('open');
+function toggleCardDisplay(clickedCard) {
+     clickedCard.classList.add('show', 'open');
 };
 
-function pushCard(evt.target) {
-     openedCards.push(evt.target);
+function clearOpened(openedCards) {
+     for (let open of openedCards) {
+		open.classList.toggle('open');
+		open.classList.toggle('show');
+	}
 };
 
-function checkMatch() {
-     if (openedCards.classList[0] === openedCards.classList[1]) {
-          openedCards.classList.toggle('matched');
-          openedCards.pop();
-          openedCards.pop();
+function checkMatch(clickedCard) {
+     if (openedCards[0].firstElementChild.className === openedCards[1].firstElementChild.className) {
+          makeMatch(openedCards);
      } else {
-          toggleCardDisplay(openedCards[0]);
-          toggleCardDisplay(openedCards[1]);
-          openedCards.pop();
-          openedCards.pop();
+          openedCards = [];
      }
+}
+
+function makeMatch(openedCards) {
+	openedCards[1].classList.toggle('match');
+	openedCards[0].classList.toggle('match');
+	// add moves?
+	if (matchCount === 16) {
+		//end game conditions
+	}
 }
 
 /*
