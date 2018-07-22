@@ -43,7 +43,7 @@ function shuffle(array) {
 
 // Create each card
 function createCardList(card) {
-     return `<li class="card"><img src="${card}"></li>`;
+     return `<li class="card"><img src="${card}"><img src="img/sunBack.jpg" class="back"></li>`;
 };
 
 // Put the shuffled, created cards onto the board
