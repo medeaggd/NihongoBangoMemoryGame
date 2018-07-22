@@ -1,3 +1,4 @@
+// Readies the game to start when the page is loaded
 window.onload = function() {
 	startGame();
 }
@@ -9,11 +10,11 @@ const cardList = [
 	"/img/go.jpg", "/img/roku.jpg", "/img/nana.jpg", "/img/hachi.jpg",
      "/img/ichi.jpg", "/img/ni.jpg", "/img/san.jpg", "/img/shi.jpg",
 	"/img/go.jpg", "/img/roku.jpg", "/img/nana.jpg", "/img/hachi.jpg"
-];
-const deck = document.getElementById('deck');
-const newBoard = document.getElementById('reset');
-let openedCards = [];
-let matchCount = 0;
+]; // Creates array with all of my cards (listed twice so they have pairs)
+const deck = document.getElementById('deck'); // Targets the ul list that will hold cards
+const newBoard = document.getElementById('reset'); // Targets the New Board/reset button
+let openedCards = []; // Creates an open array for cards to be placed to compare matches
+let moveCount = 0; // Creates a running counter for moves made in the game
 
 /*
  * Display the cards on the page
@@ -37,13 +38,14 @@ function shuffle(array) {
     return array;
 };
 
-/* Create each card */
+// Create each card
 function createDeck(cardList) {
      for (let card of cards) {
 	         return `<li class="card"><img src="${card}"></li>`;
      };
 };
 
+// Put the shuffled, created cards onto the board
 function createGameBoard() {
 	const cardHTML = cardList.map(function(card) {
 		return cardList(card);
@@ -52,20 +54,21 @@ function createGameBoard() {
 	return deck;
 }
 
- /* Initial load of cards after page loads */
+ // Initial load of cards after page loads
 function startGame() {
      shuffle(cardList);
 	createGameBoard();
-	/* Initialize clock */
+	// Initialize clock
 };
 
-/* Resets the board when the "New Board" button is clicked */
+// Resets the board when the "New Board" button is clicked
 newBoard.addEventListener('click', function() {
      //TODO: Add an if statement with listeners to prompt user if they really want to restart game.
 	openedCards = [];
 	startGame();
 });
 
+// Base listener function on deck to flip cards and check matches
 deck.addEventListener('click', function(evt) {
      if (clickedCard.classList.contains('card') && !clickedCard.classList.contains('match') && openedCards.length < 2) {
           let clickedCard = evt.target;
@@ -74,14 +77,17 @@ deck.addEventListener('click', function(evt) {
                if (openedCards.length === 2) {
                     checkMatch();
                }
-		matchCount += 1;
+          //Adds 1 to the move counter each time a card is clicked
+		moveCount += 1;
      }
 });
 
+// "Flips" the card to display on the page when clicked
 function toggleCardDisplay(clickedCard) {
      clickedCard.classList.add('show', 'open');
 };
 
+// For non-matches, clears classes from opened cards and resets the array
 function clearOpened(openedCards) {
      for (let open of openedCards) {
 		open.classList.toggle('open');
@@ -90,6 +96,7 @@ function clearOpened(openedCards) {
 	}
 };
 
+// Check for match by comparing the src attribute of the 2 active cards
 function checkMatch(clickedCard) {
      if (openedCards[0].firstElementChild.HTMLImageElement.src === openedCards[1].firstElementChild.HTMLImageElement.src) {
           makeMatch(openedCards);
@@ -98,10 +105,11 @@ function checkMatch(clickedCard) {
      }
 }
 
+// Adds the match class to 2 cards if they have matched, checks for all cards matched
 function makeMatch(openedCards) {
 	openedCards[1].classList.add('match');
 	openedCards[0].classList.add('match');
-	if (matchCount === 16) {
+	if (moveCount === 16) {
 		//end game: stop timer, pop-up with stats
 	}
 }
