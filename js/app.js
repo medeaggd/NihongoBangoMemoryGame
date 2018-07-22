@@ -14,7 +14,7 @@ const deck = document.getElementById('deck');
 const newBoard = document.getElementById('reset');
 let openedCards = [];
 let matchCount = 0;
-let clickedCard = evt.target;
+
 /*
  * Display the cards on the page
  *   - shuffle the list of cards using the provided "shuffle" method below
@@ -69,6 +69,7 @@ newBoard.addEventListener('click', function() {
 
 deck.addEventListener('click', function(evt) {
      if (clickedCard.classList.contains('card') && !clickedCard.classList.contains('match') && openedCards.length < 2) {
+          let clickedCard = evt.target;
           toggleCardDisplay(clickedCard);
           openedCards.push(clickedCard);
                if (openedCards.length === 2) {
