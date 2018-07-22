@@ -5,13 +5,12 @@ window.onload = function() {
  * Create a list that holds all of your cards
  */
 const cardList = [
-     "img/ichi.jpg", "img/ni.jpg", "img/san.jpg", "img/shi.jpg",
-	"img/go.jpg", "img/roku.jpg", "img/nana.jpg", "img/hachi.jpg",
-	"img/ichi.jpg", "img/ni.jpg", "img/san.jpg", "img/shi.jpg",
-	"img/go.jpg", "img/roku.jpg", "img/nana.jpg", "img/hachi.jpg"
+     "/img/ichi.jpg", "/img/ni.jpg", "/img/san.jpg", "/img/shi.jpg",
+	"/img/go.jpg", "/img/roku.jpg", "/img/nana.jpg", "/img/hachi.jpg",
+     "/img/ichi.jpg", "/img/ni.jpg", "/img/san.jpg", "/img/shi.jpg",
+	"/img/go.jpg", "/img/roku.jpg", "/img/nana.jpg", "/img/hachi.jpg"
 ];
 const deck = document.getElementById('deck');
-const cards = deck.querySelectorAll('.card');
 const newBoard = document.getElementById('reset');
 let openedCards = [];
 let matchCount = 0;
@@ -62,7 +61,8 @@ function startGame() {
 };
 
 /* Resets the board when the "New Board" button is clicked */
-newBoard.addEventListener('click', {
+newBoard.addEventListener('click', function() {
+     //TODO: Add an if statement with listeners to prompt user if they really want to restart game.
 	openedCards = [];
 	startGame();
 });
@@ -86,6 +86,7 @@ function clearOpened(openedCards) {
      for (let open of openedCards) {
 		open.classList.toggle('open');
 		open.classList.toggle('show');
+          openedCards = [];
 	}
 };
 
@@ -93,7 +94,7 @@ function checkMatch(clickedCard) {
      if (openedCards[0].firstElementChild.HTMLImageElement.src === openedCards[1].firstElementChild.HTMLImageElement.src) {
           makeMatch(openedCards);
      } else {
-          openedCards = [];
+          clearOpened(openedCards);
      }
 }
 
