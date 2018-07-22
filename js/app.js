@@ -18,11 +18,8 @@ let matchCount = 0;
 /*
  * Display the cards on the page
  *   - shuffle the list of cards using the provided "shuffle" method below
- --?.shuffle(cardList);
  *   - loop through each card and create its HTML
- --cardList.forEach.createHTML()?
  *   - add each card's HTML to the page
- --document.ul.li.appendChild()?
  */
 
 // Shuffle function from http://stackoverflow.com/a/2450976
@@ -40,9 +37,11 @@ function shuffle(array) {
     return array;
 };
 
-/* Create a card */
-function createCardList(card) {
-	return `<li class="card"><img src="${card}"></li>`;
+/* Create each card */
+function createDeck(cardList) {
+     for (let card of cards) {
+	         return `<li class="card"><img src="${card}"></li>`;
+     };
 };
 
 function createGameBoard() {
