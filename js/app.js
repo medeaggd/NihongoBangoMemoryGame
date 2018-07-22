@@ -10,9 +10,9 @@ const cardList = [
 	"img/ichi.jpg", "img/ni.jpg", "img/san.jpg", "img/shi.jpg",
 	"img/go.jpg", "img/roku.jpg", "img/nana.jpg", "img/hachi.jpg"
 ];
-const deck = document.querySelector('#deck');
+const deck = document.getElementById('deck');
 const cards = deck.querySelectorAll('.card');
-const newBoard = document.getElementByID('reset');
+const newBoard = document.getElementById('reset');
 let openedCards = [];
 let matchCount = 0;
 let clickedCard = evt.target;
@@ -43,7 +43,7 @@ function shuffle(array) {
 
 /* Create a card */
 function createCardList(card) {
-	return `<li class="card"><i class="${card}"></i></li>"`;
+	return `<li class="card"><img src="${card}"></li>`;
 };
 
 function createGameBoard() {
@@ -90,7 +90,7 @@ function clearOpened(openedCards) {
 };
 
 function checkMatch(clickedCard) {
-     if (openedCards[0].firstElementChild.className === openedCards[1].firstElementChild.className) {
+     if (openedCards[0].firstElementChild.HTMLImageElement.src === openedCards[1].firstElementChild.HTMLImageElement.src) {
           makeMatch(openedCards);
      } else {
           openedCards = [];
@@ -98,11 +98,10 @@ function checkMatch(clickedCard) {
 }
 
 function makeMatch(openedCards) {
-	openedCards[1].classList.toggle('match');
-	openedCards[0].classList.toggle('match');
-	// add moves?
+	openedCards[1].classList.add('match');
+	openedCards[0].classList.add('match');
 	if (matchCount === 16) {
-		//end game conditions
+		//end game: stop timer, pop-up with stats
 	}
 }
 
