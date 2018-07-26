@@ -70,7 +70,7 @@ h1, .score-panel {
     box-shadow: 5px 2px 20px 0 rgba(46, 61, 73, 0.5);
 }
 
-#deck .card.firstElementChild {
+#deck .front {
      visibility: hidden;
 }
 
@@ -80,12 +80,8 @@ h1, .score-panel {
     cursor: default;
 }
 
-#deck .card.back {
+#deck .back {
      visibility: visible;
-}
-
-#deck .card.show {
-    visibility: visible;
 }
 
 #deck .card.match {

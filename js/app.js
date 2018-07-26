@@ -43,7 +43,7 @@ function shuffle(array) {
 
 // Create each card
 function createCardList(card) {
-     return `<li class="card"><img src="${card}"><img src="img/sunBack.jpg" class="back"></li>`;
+     return `<li class="card"><img src="${card}" class="front"><img src="img/sunBack.jpg" class="back"></li>`;
 };
 
 // Put the shuffled, created cards onto the board
@@ -62,7 +62,7 @@ function startGame() {
      });
      shuffle(trueCardArr);
 	createGameBoard();
-     deck.getElementsByTagName('li').firstElementChild.setAttribute('visibility', 'hidden');
+     //deck.getElementsByTagName('li').firstChild.setAttribute('display', 'none');
 	// Initialize clock
 };
 
