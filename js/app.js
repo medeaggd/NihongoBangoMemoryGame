@@ -62,6 +62,7 @@ function startGame() {
      });
      shuffle(trueCardArr);
 	createGameBoard();
+     deck.getElementsByTagName('li').firstElementChild.setAttribute('visibility', 'hidden');
 	// Initialize clock
 };
 
